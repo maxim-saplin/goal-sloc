@@ -1,4 +1,4 @@
-A skill that makes **lines of code (SLOC)** a true north star for *actually* simplifying your codebase - preventing your agent from gaming the metric.
+A skill that makes **lines of code (SLOC)** a true north star for *actually* simplifying your codebase - preventing your agent from gaming the metric. Aggressively de-bloat your AI generated codebase.
 
 It provides your agent with a **preflight checklist** (to establish baselines and safety nets before deleting anything), an **honest reduction order**, strict **anti-gaming rules** with a **self-audit**, and well-defined **stop conditions** so the process escalates rather than spins. It's language-agnostic, with a Flutter reference and a no-tooling fallback included.
 
