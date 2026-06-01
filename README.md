@@ -4,6 +4,9 @@ It provides your agent with a **preflight checklist** (to establish baselines an
 
 Tested with Claude Code's `/goal` mode.
 
+> **Biggest risk:** No feedback loop. Make sure the agent can run the tests and actually exercise the app—unit tests prove contracts, not "it works."
+> Not a sit back and watch experience. It might be a joint effort requiring human expertise calling out bad engineering practices and non-decisive actions by AI agent
+
 ## Why
 
 A line-count target is a powerful forcing function, but it's easily gamed. The lesson behind this skill:
@@ -14,7 +17,7 @@ So this skill is based on two fundamental rules: **ingenuity** (find actual stru
 
 ## How it worked for us
 
-Based on a real run with a ~20,000-line Flutter app:
+Based on a real run with a ~20,000-line Flutter app (started in Nov 2025 and 100% written by AI agents) using Opus 4.8:
 
 |                    | Before |               After |
 |--------------------|-------:|--------------------:|
@@ -24,7 +27,7 @@ Based on a real run with a ~20,000-line Flutter app:
 
 All features preserved, analyzer clean, verified on both Android emulator *and* Linux desktop build, with 2 latent bugs fixed along the way.
 
-What worked: deleting dead code and a no-op placeholder subsystem, relocating the debug harness out of shipping code, eliminating a redundant state layer, clean-room rewrites against tests, and delegating custom logging to a library. What *looked* like progress but wasn't: trimming comments (the easiest lever, which undermines the spirit of the task), and "deep-module" reshuffles (solid design, but line count stays ~neutral). The honest part: generated/native scaffolding sets a floor—when the target is below that, the rest is a product decision, not an engineering one. The skill makes the agent surface that math up front and escalate if needed.
+What worked: deleting dead code and a no-op placeholder subsystem, relocating the debug harness out of shipping code, eliminating a redundant state layer, clean-room rewrites against tests, and delegating custom logging to a library. What *looked* like progress but wasn't: trimming comments (the easiest lever, which undermines the spirit of the task), and "deep-module" reshuffles (solid design, but line count stays ~neutral).
 
 ## Install
 
@@ -60,5 +63,3 @@ Just ask, in plain language:
 - "Get SLOC under 15k by simplifying—no gaming the metric—and tell me when only feature cuts are left."
 
 It runs preflight, applies the reduction order with verification after each change, self-audits for structural vs. cheap cuts, and stops (escalating honestly) when the well runs dry.
-
-> **Biggest risk:** No feedback loop. Make sure the agent can run the tests and actually exercise the app—unit tests prove contracts, not "it works."
